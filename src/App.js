@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 
 import Header from './Header';
-import Post from './Post';
+import Posts from './Posts';
+
 
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
@@ -18,7 +19,7 @@ const App = () => {
       <div className="App">
         <Header />
         <section className="App-main">
-          <Post />
+          <Posts />
         </section>
       </div>
     </ApolloProvider>
