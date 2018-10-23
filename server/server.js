@@ -3,6 +3,21 @@ let graphqlHTTP = require("express-graphql");
 let { buildSchema } = require("graphql");
 let cors = require("cors");
 
+let Pusher = require("pusher");
+let bodyParser = require("body-parser");
+let Multipart = require("connect-multiparty");
+
+let multipartMiddleware = new Multipart();
+
+
+let pusher = new Pusher({
+  appId: 'PUSHER_APP_ID',
+  key: 'PUSHER_APP_KEY',
+  secret: 'PUSHER_APP_SECRET',
+  cluster: 'PUSHER_CLUSTER',
+  encrypted: true
+});
+
 let schema = buildSchema(`
       type User {
         id : String!
