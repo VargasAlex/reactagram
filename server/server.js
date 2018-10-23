@@ -106,5 +106,25 @@ app.use(
     graphiql: true
   })
 );
+
+app.post('/newpost', multipartMiddleware, (req, res) => {
+  // create a sample post
+  let post = {
+    user: {
+      nickname: req.body.name,
+      avatar: req.body.avatar
+    },
+    image: req.body.image,
+    caption: req.body.caption
+  }
+
+  // trigger pusher event
+  pusher.trigger("posts-channel", "new-post", {
+    post
+  });
+
+  return res.json({ status: "Post created" });
+});
+
 // set application port
 app.listen(4000);
